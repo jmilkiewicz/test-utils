@@ -2,7 +2,6 @@ package pl.softmil.test.utils.hamcrest;
 
 import org.hamcrest.Factory;
 import org.hamcrest.Matcher;
-import org.hamcrest.core.StringContains;
 import org.hamcrest.core.SubstringMatcher;
 
 public class StringContainsIgnoringCase extends SubstringMatcher {
@@ -21,8 +20,8 @@ public class StringContainsIgnoringCase extends SubstringMatcher {
     }
 
     @Factory
-    public static Matcher<String> containsString(String substring) {
-        return new StringContains(substring);
+    public static Matcher<String> containsStringIgnoringCase(String substring) {
+        return new StringContainsIgnoringCase(substring);
     }
 
 }
