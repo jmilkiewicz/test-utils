@@ -37,7 +37,7 @@ public class PoolerTest {
         
         assertThat(poolXElements, notNullValue());
         assertThat(poolXElements.size(), equalTo(1));
-        assertThat(poolXElements, either(Matchers.<String>hasItem("1")).or(Matchers.<String>hasItem("2")));
+        assertThat(poolXElements, Matchers.<List<String>>either(Matchers.<String>hasItem("1")).or(Matchers.<String>hasItem("2")));
     }
 
 }
