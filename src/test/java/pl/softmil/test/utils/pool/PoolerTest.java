@@ -5,6 +5,7 @@ import static org.junit.Assert.assertThat;
 
 import java.util.*;
 
+import org.hamcrest.Matchers;
 import org.junit.*;
 import org.junit.rules.ExpectedException;
 
@@ -36,7 +37,7 @@ public class PoolerTest {
         
         assertThat(poolXElements, notNullValue());
         assertThat(poolXElements.size(), equalTo(1));
-        assertThat(poolXElements, either(hasItem("1")).or(hasItem("2")));
+        assertThat(poolXElements, either(Matchers.<String>hasItem("1")).or(Matchers.<String>hasItem("2")));
     }
 
 }
