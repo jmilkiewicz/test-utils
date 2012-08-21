@@ -128,8 +128,8 @@ public class WaitUntilFileIsStableIntegrationTest {
 			public void run() {
 				try {
 					startSignal.await();
-					WaitUntil<Map<String, List<Long>>> waitUntil = new WaitUntil<Map<String, List<Long>>>(
-							waitMaxMillisToWait, waitSleepInterval,
+					WaitUntil<Map<String, List<Long>>> waitUntil = new WaitUntil<Map<String, List<Long>>>(WaitUntilTimes.withMaxAndSleepInteval(
+							waitMaxMillisToWait, waitSleepInterval),
 							new UntilFileIsStable(fileName,
 									stabilizationThreshold));
 					waitUntil.waitFor();

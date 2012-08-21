@@ -7,14 +7,15 @@ public class WaitUntil<T> {
     private long sleepInterval;
     private Until<T> until;
     private int runIsTrueCount = 0;
-
-    public WaitUntil(long maxMillisToWait, long sleepInterval, Until<T> until) {
+    
+    public WaitUntil(WaitUntilTimes waitUntilTimes, Until<T> until) {
         super();
-        this.maxMillisToWait = maxMillisToWait;
-        this.sleepInterval = sleepInterval;
+        this.maxMillisToWait = waitUntilTimes.maxMillisToWait;
+        this.sleepInterval = waitUntilTimes.sleepInterval;
         this.until = until;
     }
 
+    
     public void waitFor() {
         T context = until.getContext();
         long start = System.currentTimeMillis();

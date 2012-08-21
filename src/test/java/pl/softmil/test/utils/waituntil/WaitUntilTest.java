@@ -12,8 +12,8 @@ public class WaitUntilTest {
     public void timeoutForAlwaysFalse() {
         Until<Object> alwaysFalseUntil = fixedAnswerUntil(false);
 
-        WaitUntil<Object> waitUntil = new WaitUntil<Object>(1, 100,
-                alwaysFalseUntil);
+        WaitUntil<Object> waitUntil = new WaitUntil<Object>(
+                WaitUntilTimes.withMaxAndSleepInteval(1, 100), alwaysFalseUntil);
         waitUntil.waitFor();
     }
 
@@ -21,8 +21,8 @@ public class WaitUntilTest {
     public void successForAlwaysTrue() {
         Until<Object> alwaysFalseUntil = fixedAnswerUntil(true);
 
-        WaitUntil<Object> waitUntil = new WaitUntil<Object>(1, 100,
-                alwaysFalseUntil);
+        WaitUntil<Object> waitUntil = new WaitUntil<Object>(
+                WaitUntilTimes.withMaxAndSleepInteval(1, 100), alwaysFalseUntil);
         waitUntil.waitFor();
     }
 
@@ -31,7 +31,8 @@ public class WaitUntilTest {
         Until<Map<String, Integer>> alwaysFalseUntil = trueAfterGivenNumberOfAttemps(12);
 
         WaitUntil<Map<String, Integer>> waitUntil = new WaitUntil<Map<String, Integer>>(
-                1000, 100, alwaysFalseUntil);
+                WaitUntilTimes.withMaxAndSleepInteval(1000, 100),
+                alwaysFalseUntil);
         waitUntil.waitFor();
     }
 
@@ -40,14 +41,16 @@ public class WaitUntilTest {
         Until<Map<String, Integer>> alwaysFalseUntil = trueAfterGivenNumberOfAttemps(3);
 
         WaitUntil<Map<String, Integer>> waitUntil = new WaitUntil<Map<String, Integer>>(
-                7000, 100, alwaysFalseUntil);
+                WaitUntilTimes.withMaxAndSleepInteval(7000, 100),
+                alwaysFalseUntil);
         waitUntil.waitFor();
     }
 
     private Until<Map<String, Integer>> trueAfterGivenNumberOfAttemps(
             final int attemps) {
         return new Until<Map<String, Integer>>() {
-            private static final String INVOCATION_NUMBER= "invocationsNumber";
+            private static final String INVOCATION_NUMBER = "invocationsNumber";
+
             @Override
             public boolean isTrue(Map<String, Integer> context) {
                 Integer numberOfInvocations = context.get(INVOCATION_NUMBER) + 1;
@@ -57,7 +60,7 @@ public class WaitUntilTest {
 
             @Override
             public Map<String, Integer> getContext() {
-                Map<String, Integer> result = new ConcurrentHashMap<String, Integer>();                              
+                Map<String, Integer> result = new ConcurrentHashMap<String, Integer>();
                 result.put(INVOCATION_NUMBER, new Integer(0));
                 return result;
             }
