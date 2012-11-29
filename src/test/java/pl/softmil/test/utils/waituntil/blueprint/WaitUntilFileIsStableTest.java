@@ -12,7 +12,7 @@ import org.junit.rules.TemporaryFolder;
 
 import pl.softmil.test.utils.waituntil.*;
 
-public class WaitUntilFileIsStableIntegrationTest {
+public class WaitUntilFileIsStableTest {
 	private String fileName;
 	private final CountDownLatch startSignal = new CountDownLatch(1);
 	private final CountDownLatch doneSignal = new CountDownLatch(2);
