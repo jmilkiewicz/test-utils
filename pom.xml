@@ -17,7 +17,7 @@
 	<properties>
 		<targetJdk>1.6</targetJdk>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<junit-version>4.10</junit-version>
+		<junit-version>4.11</junit-version>
 		<hamcrest-version>1.2.1</hamcrest-version>
 
 		<version.extension.wagon-webdav>1.0-beta-2</version.extension.wagon-webdav>
@@ -29,7 +29,7 @@
 	<dependencies>
 		<dependency>
 			<groupId>junit</groupId>
-			<artifactId>junit-dep</artifactId>
+			<artifactId>junit</artifactId>
 			<version>${junit-version}</version>
 			<scope>compile</scope>
 			<exclusions>
